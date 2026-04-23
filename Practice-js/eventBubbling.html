@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        margin: 15px;
+        padding: 15px;
+        border: 1px solid black;
+    }
+    .box{
+        margin: 15px;
+        padding: 15px;
+        border: 1px solid black;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="box">
+            <p>this is a box</p>
+        </div>
+    </div>
+    
+    <script>
+        document.querySelector(".box").addEventListener("click", (e) => {
+            e.stopPropagation();
+            alert("box was clicked")
+        })
+
+        document.querySelector(".container").addEventListener("click", (e) => {
+            alert("conatiner was clicked");
+        })
+
+        //generate a random color
+        function randomColor(){
+            let val1 = Math.ceil(0 + Math.random() * 255);
+            let val2 = Math.ceil(0 + Math.random() * 255);
+            let val3 = Math.ceil(0 + Math.random() * 255);
+            return `rgb(${val1}, ${val2}, ${val3})`
+        }
+
+        //The background color changes every 1 second
+        let b = setInterval(() => {
+            document.querySelector(".box").style.background = randomColor()
+            console.log("b = ", b);
+        }, 1000);       
+
+        // setInterval(() => {
+        //     document.querySelector(".container").style.background = randomColor()
+        // }, 1000);
+
+        //setTimeout = now bgcolor will change after 5 sec
+        let a = setTimeout(() => {
+            document.querySelector(".container").style.background = randomColor();
+        }, 5000);
+
+        //get value of a to run clearTimeout in console.
+        console.log(a);  
+
+    </script>
+</body>
+</html>
