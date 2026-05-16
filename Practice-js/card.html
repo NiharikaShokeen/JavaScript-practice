@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            width: 800px;
+        }
+
+        .content {
+            padding-left: 10px;
+            margin-left: 10px;
+        }
+
+        .image {
+            position: relative;
+            
+        }
+
+        .image .duration {
+            position: absolute;
+            bottom: 4px;
+            padding: 3px;
+            z-index: 10;
+            right: 3px;
+            color: white;
+            background: rgb(72, 66, 66);
+            opacity: 0.9;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+
+        .image img {
+            border-radius: 10px;
+            width: 260px;
+        }
+
+        h2,
+        p {
+            padding: 1px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+
+        <!-- creates a card -->
+        <!-- <div class="container">
+            <div class="image"><img src="https://i.ytimg.com/vi/tVzUXW6siu0/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLACwWOixJVrKLFindK92kYMgTcQbw" alt="thumbnail">
+                <div class="duration">31:06</div>
+            </div>
+            <div class="content">
+                <h2>Introduction to Backend | Sigma Weh Dev video #2</h2>
+                <p>387K views . 2 months ago</p>
+                <p>CodeWithHarry </p>
+                
+            </div> -->
+    </div>
+    </div>
+
+    <script>
+        function createCard(title, cName, views, monthsOld, duration, thumbnail) {
+            let viewStr;
+            if (views < 1000) {
+                viewStr = views;
+            }
+            else if (views > 1000000) {
+                viewStr = Math.floor(views / 1000000) + "M";
+            }
+            else {
+                viewStr = Math.floor(views / 1000) + "K";
+            }
+
+            //creates a card
+            let html = `<div class="card">
+                <div class="container" >
+            <div class="image"><img src="${thumbnail}" alt="thumbnail">
+            <div class="duration">${duration}</div>
+        </div>
+            <div class="content">
+                <h2>${title}</h2>
+                <p>${viewStr} views . ${monthsOld} months ago</p>
+                <p>${cName}</p>
+                
+            </div>
+        </div >
+    </div >`
+            document.querySelector(".card").innerHTML = document.querySelector(".card").innerHTML + html
+        }
+
+        createCard("Introduction to Backend | Sigma Weh Dev video #2", "CodeWithHarry", 560000, 7, "31:22", "https://i.ytimg.com/vi/tVzUXW6siu0/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLACwWOixJVrKLFindK92kYMgTcQbw");
+
+    </script>
+</body>
+
+</html>
