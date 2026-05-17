@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <p>using async and await keywords</p>
+    </div>
+
+    <script>
+
+        //settle means promise resolve or reject
+        //resolve means promise has started successfully
+        //reject mean projet is rejected
+
+        // async function getdata() {
+        //     //simulate getting data from a server
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             resolve(111);
+        //         }, 3000);
+        //     })
+        // }
+
+        
+        //use jsonPlaceholder
+        async function getData() {
+            let x = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+            let data = await x.json();
+            console.log(data);
+            return data;
+        }
+        async function main() {
+            console.log("loading modules");
+            console.log("do something else");
+            console.log("load data");
+
+            let data = await getData()
+            console.log(data);
+
+            console.log("process data");
+            console.log("Done");
+
+        }
+        main();
+
+
+        //Create a promise which rejects after three seconds, use an async-await to get its value, use a try-catch to handle its error.
+        let prom = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                reject("Promise rejected after 3 seconds");
+            }, 3000);
+        });
+
+        async function main2() {
+            try {
+                let result = await prom;
+                console.log(result);
+            }
+            catch (error) {
+                console.log(error);
+            }
+            finally {
+                console.log("This always executes");
+            }
+        }
+
+        main2();
+
+    </script>
+</body>
+
+</html>
